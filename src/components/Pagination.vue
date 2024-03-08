@@ -1,7 +1,6 @@
 <script>
 import axiosInstance from "../../services/axios.js";
 import Product from "@/components/Product.vue";
-import product from "@/components/Product.vue";
 export default {
   name: "Pagination",
   data(){
@@ -30,9 +29,6 @@ export default {
       return Math.ceil(this.products.length / this.paginatedElements)
     },
     paginatedProducts(){
-      if(this.pages < this.page){
-        this.page = this.pages
-      }
       return this.products.slice(
           (this.page - 1) * this.paginatedElements,
           (this.page - 1) * this.paginatedElements + this.paginatedElements)
@@ -40,6 +36,13 @@ export default {
   },
   mounted() {
     this.getProducts()
+  },
+  watch:{
+    pages(oldPages){
+      if(this.page > oldPages ) {
+        this.page = this.pages
+      }
+    }
   }
 }
 </script>
