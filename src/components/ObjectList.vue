@@ -44,9 +44,11 @@ export default {
 
   <v-row v-for="(category,i) in categories" :key="i">
     <v-col cols="12"><h1>{{category}}</h1></v-col>
-      <v-col v-for="product in products.filter(product => product.category === category)" :key="product.id" >
+    <template v-for="product in products">
+      <v-col v-if="product.category === category" :key="product.id">
         <Product :product="product" />
       </v-col>
+    </template>
   </v-row>
 
   </v-container>
