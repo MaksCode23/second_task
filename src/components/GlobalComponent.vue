@@ -6,6 +6,7 @@ import Events from "@/components/Events.vue"
 import Table from "@/components/Table.vue";
 import ObjectList from "@/components/ObjectList.vue";
 import Pagination from "@/components/Pagination.vue";
+import NestedList from "@/components/NestedList.vue";
 export default {
   name: "GlobalComponent",
   components: {
@@ -16,7 +17,7 @@ export default {
     Table,
     ObjectList,
     Pagination,
-
+    NestedList
   },
   data(){
     return {
@@ -26,8 +27,10 @@ export default {
                 { text: "Події", value: 3},
                 { text: "Рандомний колір та размір шрифту списку елементів",  value: 4},
                 { text: "Таблиця", value: 5},
-                { text: "Список об'єктів та фільтрація", value: 6},
-                { text: "Пагінація", value: 7}
+                { text: "Список елементів та фільтрація", value: 6},
+                { text: "Пагінація", value: 7},
+                { text: "Вкладені списки", value: 8}
+
       ],
     }
     },
@@ -48,6 +51,7 @@ export default {
     <Table v-if="selectedComponent===5"/>
     <Object-List v-if="selectedComponent===6"/>
     <Pagination v-if="selectedComponent===7"/>
+    <Nested-List v-if="selectedComponent === 8"/>
   </div>
 
 </template>
